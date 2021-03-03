@@ -1,25 +1,91 @@
-import logo from './logo.svg';
-import './App.css';
+import { Component } from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      age: 0,
+      purpose: "",
+      social: "",
+      fullName: "",
+    };
+    // this.handleInputChange = this.handleInputChange.bind(this);
+  }
+  //no direct mutation of state;
+  //binding methods to your component using constructor method;
+
+  handleInputChange = (event) => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+
+  // handleInputChange = (event) => {
+  //   this.setState({ [event.target.name]: event.target.value });
+  // };
+
+  render() {
+    return (
+      <>
+        <Intro fullName={this.state.fullName} />
+        <Purpose designation={this.state.purpose} />
+        <Social twitter={this.state.social} />
+        <div>I am {this.state.age} years old</div>
+        <div>Make the profile yours Fill the form below </div>
+        <div>
+          <label htmlFor="fullName">FullName</label>
+          <input
+            onChange={this.handleInputChange}
+            id="fullName"
+            type="text"
+            name="fullName"
+          />
+        </div>
+        <div>
+          <label htmlFor="purpose">Purpose</label>
+          <input
+            onChange={this.handleInputChange}
+            id="purpose"
+            type="text"
+            name="purpose"
+          />
+        </div>
+        <div>
+          <label htmlFor="social">Social</label>
+          <input
+            onChange={this.handleInputChange}
+            id="social"
+            type="text"
+            name="social"
+          />
+        </div>
+        <div>
+          <label htmlFor="age">Age</label>
+          <input
+            onChange={this.handleInputChange}
+            id="age"
+            step="1"
+            type="number"
+            name="age"
+          />
+        </div>
+      </>
+    );
+  }
 }
 
-export default App;
+class Intro extends Component {
+  render() {
+    return <div>I am {this.props.fullName}</div>;
+  }
+}
+
+class Purpose extends Component {
+  render() {
+    return <div>I am {this.props.designation}</div>;
+  }
+}
+
+class Social extends Component {
+  render() {
+    return <div>You can Reach me on Twitter @{this.props.twitter}</div>;
+  }
+}
