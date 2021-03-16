@@ -1,91 +1,20 @@
+import Home from "./Home";
 import { Component } from "react";
+import { Navbar } from "./Navbar";
+import { User, GetUserById } from "./User";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 export default class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      age: 0,
-      purpose: "",
-      social: "",
-      fullName: "",
-    };
-    // this.handleInputChange = this.handleInputChange.bind(this);
-  }
-  //no direct mutation of state;
-  //binding methods to your component using constructor method;
-
-  handleInputChange = (event) => {
-    this.setState({ [event.target.name]: event.target.value });
-  };
-
-  // handleInputChange = (event) => {
-  //   this.setState({ [event.target.name]: event.target.value });
-  // };
-
   render() {
     return (
-      <>
-        <Intro fullName={this.state.fullName} />
-        <Purpose designation={this.state.purpose} />
-        <Social twitter={this.state.social} />
-        <div>I am {this.state.age} years old</div>
-        <div>Make the profile yours Fill the form below </div>
-        <div>
-          <label htmlFor="fullName">FullName</label>
-          <input
-            onChange={this.handleInputChange}
-            id="fullName"
-            type="text"
-            name="fullName"
-          />
-        </div>
-        <div>
-          <label htmlFor="purpose">Purpose</label>
-          <input
-            onChange={this.handleInputChange}
-            id="purpose"
-            type="text"
-            name="purpose"
-          />
-        </div>
-        <div>
-          <label htmlFor="social">Social</label>
-          <input
-            onChange={this.handleInputChange}
-            id="social"
-            type="text"
-            name="social"
-          />
-        </div>
-        <div>
-          <label htmlFor="age">Age</label>
-          <input
-            onChange={this.handleInputChange}
-            id="age"
-            step="1"
-            type="number"
-            name="age"
-          />
-        </div>
-      </>
+      <Router>
+        <Navbar />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/users" component={User} />
+          <Route exact path="/users/:id" component={GetUserById} />
+        </Switch>
+      </Router>
     );
-  }
-}
-
-class Intro extends Component {
-  render() {
-    return <div>I am {this.props.fullName}</div>;
-  }
-}
-
-class Purpose extends Component {
-  render() {
-    return <div>I am {this.props.designation}</div>;
-  }
-}
-
-class Social extends Component {
-  render() {
-    return <div>You can Reach me on Twitter @{this.props.twitter}</div>;
   }
 }
