@@ -10,9 +10,10 @@ export default class App extends Component {
       <Router>
         <Navbar />
         <Switch>
+      
+          <Route path="/users" component={User} />
+          <Route path="/users/:id" component={GetUserById} />
           <Route exact path="/" component={Home} />
-          <Route exact path="/users" component={User} />
-          <Route exact path="/users/:id" component={GetUserById} />
         </Switch>
       </Router>
     );
