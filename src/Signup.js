@@ -76,7 +76,7 @@ export class Signup extends Component {
             ) : (
               ""
             )}
-            <div class="mb-3">
+            <div className="mb-3">
               <label htmlFor="exampleInputEmail1" className=" fw-bold">
                 Email address
               </label>
@@ -93,7 +93,7 @@ export class Signup extends Component {
                 We'll never share your email with anyone else.
               </div>
             </div>
-            <div class="mb-3">
+            <div className="mb-3">
               <label
                 htmlFor="exampleInputPassword1"
                 className="form-label fw-bold"
@@ -109,7 +109,7 @@ export class Signup extends Component {
               />
             </div>
             <div className="mb-3">
-              <label for="exampleInputPassword1" className="form-label">
+              <label htmlFor="exampleInputPassword1" className="form-label">
                 Confirm Password
               </label>
               <input
@@ -123,7 +123,7 @@ export class Signup extends Component {
             <button
               disabled={isFormSubmitting}
               type="submit"
-              class="btn btn-primary col"
+              className="btn btn-primary col"
             >
               {isFormSubmitting ? "Registering..." : "Submit"}
             </button>
