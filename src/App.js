@@ -3,6 +3,7 @@ import { Component } from "react";
 import { Navbar } from "./Navbar";
 import { User, GetUserById } from "./User";
 import { Login } from "./Login";
+import { Dashboard } from "./Dashboard";
 import { Signup } from "./Signup";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -18,6 +19,7 @@ export default class App extends Component {
             <Route path="/users/:id" component={GetUserById} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
+            <Route path="/dashboard" component={Dashboard} />
           </Switch>
         </div>
       </Router>
